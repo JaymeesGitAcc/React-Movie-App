@@ -1,0 +1,12 @@
+.image_container {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.image_container img {
+    border-radius: inherit;
+}
+
+.card_text {
+    padding: 0.5rem 1rem;
+}
