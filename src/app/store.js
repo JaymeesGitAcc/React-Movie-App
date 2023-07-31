@@ -5,6 +5,6 @@ import trendingShowsReducer from '../features/trendingTvShows/trendingShowsSlice
 export const store = configureStore({
   reducer: {
     trendingMovies: trendingMoviesReducer,
-    trendingShows: trendingShowsReducer
+    trendingShows: trendingShowsReducer,
   },
 });

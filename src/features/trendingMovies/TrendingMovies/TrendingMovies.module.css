@@ -11,3 +11,13 @@
 .section_title {
     margin-bottom: 1rem;
 }
+
+.flex {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.image_container {
+    width: 150px;
+}

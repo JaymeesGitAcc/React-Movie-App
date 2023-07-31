@@ -1,0 +1,22 @@
+.form_container {
+    border: 1px solid;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.form {
+    width: inherit;
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+
+.form input {
+    font-size: 16px;
+    outline: none;
+    padding: 0.6em 0.4em;
+}
+
+.submit_btn {
+    border: none;
+    cursor: pointer;
+}
