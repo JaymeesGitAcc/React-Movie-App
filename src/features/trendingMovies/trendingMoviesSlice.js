@@ -20,7 +20,7 @@ export const trendingMoviesAsync = createAsyncThunk(
             const data = await fetch(`https://api.themoviedb.org/3/trending/movie/${args}`, options);
             if(!data.ok)
                 return rejectWithValue('Error occured while fetching data');
-            const response = data.json();
+            const response = await data.json();
             return response;
         } catch (error) {
             return rejectWithValue('Error occured while fetching data');

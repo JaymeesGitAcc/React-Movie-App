@@ -1,15 +1,18 @@
 import React from 'react';
-import TrendingMovies from './features/trendingMovies/TrendingMovies/TrendingMovies';
-import TrendingShows from './features/trendingTvShows/TrendingShows/TrendingShows';
-import SearchBar from './components/SearchBar/SearchBar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MovieDetails from './components/MovieDetails/MovieDetails';
+import Home from './components/HomePage/Home';
 
 function App() {
   return (
-    <div className="App">
-      <SearchBar/>
-      <TrendingMovies />
-      <TrendingShows/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path='/' element={<Home/>}/>
+          <Route exact path="/movie/:id" element={<MovieDetails />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
