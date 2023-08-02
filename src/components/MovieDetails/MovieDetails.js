@@ -30,6 +30,7 @@ const MovieDetails = () => {
                 </div>
                 <div className={styles.about_movie}>
                     <h1>{details.title}</h1>
+                    <h3><i>{details.tagline}</i></h3>
                     <p>{details.overview}</p>
                 </div>
             </div>

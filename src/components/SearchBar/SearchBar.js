@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import styles from './SearchBar.module.css';
-
+import { useNavigate } from 'react-router-dom';
 const SearchBar = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
+    
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (searchQuery)
-            console.log(searchQuery);
-        setSearchQuery('');
+            navigate(`/results/${searchQuery}`);
     }
 
     return (

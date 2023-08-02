@@ -1,4 +1,4 @@
-.movieDetails_section {
+.tvShowDetails_section {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -16,7 +16,7 @@
     border: 1px solid red;
 }
 
-.about_movie {
+.about_show {
     border: 1px solid yellow;
     padding: 2rem 1rem;
 }
