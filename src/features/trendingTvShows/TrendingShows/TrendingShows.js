@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { trendingShowsAsync } from '../trendingShowsSlice';
+import { Link } from 'react-router-dom';
 import styles from './TrendingShows.module.css';
 import { useEffect, useState } from 'react';
 
@@ -31,13 +32,17 @@ const TrendingShows = () => {
                     list.results &&
                     list.results.map(obj => {
                         return <div key={obj.id}>
-                            <div className={styles.image_container}>
-                                <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${obj.poster_path}`}
-                                    alt={obj.name} />
-                            </div>
+                            <Link to={`/tv/${obj.id}`}>
+                                <div className={styles.image_container}>
+                                    <img src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${obj.poster_path}`}
+                                        alt={obj.name} />
+                                </div>
+                            </Link>
 
                             <div className={styles.card_text}>
-                                <p>{obj.name}</p>
+                                <Link to={`/tv/${obj.id}`}>
+                                    <p>{obj.name}</p>
+                                </Link>
                             </div>
                         </div>
                     })
