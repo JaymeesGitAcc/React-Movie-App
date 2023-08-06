@@ -14,6 +14,16 @@ const MovieDetails = () => {
         dispatch(movieDetailsAsync(id));
     }, [dispatch, id]);
 
+    function releaseYear(dateValue) {
+        const date = new Date(dateValue);
+        return date.getFullYear();
+    }
+
+    function imageURL(path) {
+        const url = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${path}`;
+        return url;
+    }
+
     if (loading)
         return <div>loading...</div>
 
@@ -26,10 +36,12 @@ const MovieDetails = () => {
 
             <div className={styles.details}>
                 <div className={styles.image_container}>
-                    <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${details.poster_path}`} alt="" />
+                    <img src={imageURL(details.poster_path)} alt="" />
                 </div>
                 <div className={styles.about_movie}>
-                    <h1>{details.title}</h1>
+                    <h1>{details.title}&nbsp;
+                        {`(${releaseYear(details.release_date)})`}
+                    </h1>
                     <h3><i>{details.tagline}</i></h3>
                     <p>{details.overview}</p>
                 </div>
