@@ -11,7 +11,17 @@ const TvShowDetails = () => {
 
     useEffect(() => {
         dispatch(showDetailsAsync(id));
-    } ,[dispatch]);
+    } ,[dispatch, id]);
+
+    function releaseYear(dateString) {
+        const date = new Date(dateString);
+        return date.getFullYear();
+    }
+
+    function imageURL(path) {
+        const url = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${path}`;
+        return url;
+    }
 
     if(loading)
         return <div>loading...</div>
@@ -25,10 +35,10 @@ const TvShowDetails = () => {
             <h1>Tv show id: {id}</h1>
             <div className={styles.details}>
                 <div className={styles.image_container}>
-                    <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${details.poster_path}`} alt="" />
+                    <img src={imageURL(details.poster_path)} alt="" />
                 </div>
                 <div className={styles.about_show}>
-                    <h1>{details.name}</h1>
+                    <h1>{details.name}&nbsp;{`(${releaseYear(details.first_air_date)})`}</h1>
                     <h3><i>{details.tagline}</i></h3>
                     <p>{details.overview}</p>
                 </div>
