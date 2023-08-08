@@ -18,7 +18,7 @@ export const showDetailsAsync = createAsyncThunk(
     'showDetails/detail',
     async (args, { rejectWithValue }) => {
         try {
-            const data = await fetch(`https://api.themoviedb.org/3/tv/${args}`, options);
+            const data = await fetch(`https://api.themoviedb.org/3/tv/${args}?append_to_response=videos`, options);
             const res = await data.json();
             return res;
         } catch (error) {

@@ -4,6 +4,7 @@ import trendingShowsReducer from '../features/trendingTvShows/trendingShowsSlice
 import movieDetailsReducer from '../features/movieDetailsSlice';
 import showDetailsReducer from '../features/tvShowDetailsSlice';
 import searchResultsReducer from '../features/searchSlice';
+import videoPlayerReducer from '../features/videoPlayerSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     trendingShows: trendingShowsReducer,
     movieDetails: movieDetailsReducer,
     showDetails: showDetailsReducer,
-    searchResults: searchResultsReducer
-  },
+    searchResults: searchResultsReducer,
+    videoPlayer: videoPlayerReducer
+  }
 });

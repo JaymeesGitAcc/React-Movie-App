@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
     details: [],
     loading: false,
-    error: null
+    error: null,
+    videos: null
 }
 
 const options = {
@@ -18,7 +19,7 @@ export const movieDetailsAsync = createAsyncThunk(
     'movieDetails/detail',
     async (args, { rejectWithValue }) => {
         try {
-            const data = await fetch(`https://api.themoviedb.org/3/movie/${args}`, options);
+            const data = await fetch(`https://api.themoviedb.org/3/movie/${args}?append_to_response=videos`, options);
             const res = await data.json();
             return res;
         } catch (error) {
@@ -39,12 +40,16 @@ export const movieDetailsSlice = createSlice({
         .addCase(movieDetailsAsync.fulfilled, (state, action) => {
             state.loading = false;
             state.details = action.payload;
+            state.videos = action.payload.videos;
         })
         .addCase(movieDetailsAsync.rejected, (state, action) => {
             state.error = action.payload;
             state.loading = false;
+            state.videos = null;
         })
     }
 });
+
+export const videos = (state) => state.movieDetails.videos;
 
 export default movieDetailsSlice.reducer;
