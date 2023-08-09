@@ -4,9 +4,13 @@
     position: fixed;
     inset: 1rem 10rem;
     margin: auto;
-    border: 1px solid red;
-    background-color: aquamarine;
+    background-color: #555;
     z-index: 2;
+    display: none;
+}
+
+.show {
+    display: flex;
 }
 
 .videoPlayer_header {
@@ -18,7 +22,6 @@
     margin-left: auto;
     cursor: pointer;
 }
-
 
 .videoPlayer_container iframe {
     border: 1px solid blue;

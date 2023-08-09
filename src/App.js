@@ -6,12 +6,8 @@ import SearchResults from './components/SearchResults/SearchReults';
 import NotFound from './components/NotFound/NotFound';
 import TvShowDetails from './components/TvShowDetails/TvShowDetails';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer';
-import { useSelector } from 'react-redux';
-import { hiddenState } from './features/videoPlayerSlice';
 
 function App() {
-
-  const hidden = useSelector(hiddenState);
 
   return (
     <>
@@ -25,7 +21,7 @@ function App() {
             <Route element={<NotFound />} />
           </Routes>
 
-          {!hidden && <VideoPlayer/>} 
+          <VideoPlayer/>
         </div>
       </Router>
     </>

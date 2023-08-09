@@ -1,31 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    src: '',
-    hidden: true,
-    videos: null
+    display: false,
+    url: ''
 }
 
 export const videoPlayerSlice = createSlice({
     name: 'videoPlayer',
     initialState,
     reducers: {
-        showVideoPlayer: (state, action) => {
-            state.src = action.payload;
-            state.hidden = false;
+        showVideoPlayer: (state) => {
+            state.display = true;
         },
         hideVideoPlayer: (state) => {
-            state.src = '';
-            state.hidden = true;
-        }, 
-        setVideos: (state, action) => {
-            state.videos = action.payload;
+            state.display = false;
+            state.url = '';
+        },
+        setURL: (state, action) => {
+            state.url = action.payload;
         }
     }
 });
 
-export const { showVideoPlayer, hideVideoPlayer, setVideos } = videoPlayerSlice.actions;
-export const videoSource = (state) => state.videoPlayer.src;
-export const hiddenState = (state) => state.videoPlayer.hidden;
+export const { 
+    showVideoPlayer, 
+    hideVideoPlayer,
+    setURL
+} = videoPlayerSlice.actions;
+
+export const displayState = (state) => state.videoPlayer.display;
+export const source = (state) => state.videoPlayer.url;
 
 export default videoPlayerSlice.reducer;
