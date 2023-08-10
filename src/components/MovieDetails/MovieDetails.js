@@ -2,19 +2,16 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieDetailsAsync } from "../../features/movieDetailsSlice";
-import { showVideoPlayer, setURL, displayState } from "../../features/videoPlayerSlice";
+import { showVideoPlayer } from "../../features/videoPlayerSlice";
 import styles from './MovieDetails.module.css';
 
 
 const MovieDetails = () => {
 
-    // console.log('MovieDetails rendered');
-
     const { id } = useParams();
     const dispatch = useDispatch();
-    const videoPlayer = useSelector(displayState);
 
-    const { details, loading, error, videos } = useSelector(state => state.movieDetails);
+    const { details, loading, error } = useSelector(state => state.movieDetails);
 
     useEffect(() => {
 
@@ -39,14 +36,6 @@ const MovieDetails = () => {
 
     if (error)
         return <div>{error}</div>
-
-    if(videoPlayer) {
-        const { results } = videos;
-        const trailers = results.filter(item => item.type === 'Trailer');
-        // console.log(trailers[0]);
-        const URL = `https://www.youtube.com/embed/${trailers[0].key}`;
-        dispatch(setURL(URL));
-    }
 
     return (
         <section className={styles.movieDetails_section} >
