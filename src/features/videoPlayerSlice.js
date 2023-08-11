@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     display: false,
-    url: ''
+    ID: ''
 }
 
 export const videoPlayerSlice = createSlice({
@@ -14,10 +14,9 @@ export const videoPlayerSlice = createSlice({
         },
         hideVideoPlayer: (state) => {
             state.display = false;
-            state.url = '';
         },
-        setURL: (state, action) => {
-            state.url = action.payload;
+        setID: (state, action) => {
+            state.ID = action.payload;
         }
     }
 });
@@ -25,10 +24,10 @@ export const videoPlayerSlice = createSlice({
 export const { 
     showVideoPlayer, 
     hideVideoPlayer,
-    setURL
+    setID
 } = videoPlayerSlice.actions;
 
 export const displayState = (state) => state.videoPlayer.display;
-export const source = (state) => state.videoPlayer.url;
+export const videoID = (state) => state.videoPlayer.ID;
 
 export default videoPlayerSlice.reducer;

@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 
-.videoPlayer_container iframe {
+.videoPlayer_container .videoPlayer {
     border: 1px solid blue;
     flex-grow: 1;
 }

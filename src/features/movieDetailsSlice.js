@@ -4,7 +4,8 @@ const initialState = {
     details: [],
     loading: false,
     error: null,
-    videos: null
+    videos: null,
+    videoPlayer: false
 }
 
 const options = {
@@ -31,7 +32,14 @@ export const movieDetailsAsync = createAsyncThunk(
 export const movieDetailsSlice = createSlice({
     name: 'movieDetails',
     initialState,
-    reducers: {},
+    reducers: {
+        displayVideoPlayer: (state) => {
+            state.videoPlayer = true;
+        },
+        hideVideoPlayer: (state) => {
+            state.videoPlayer = false;
+        }
+    },
     extraReducers: builder => {
         builder
         .addCase(movieDetailsAsync.pending, (state) => {
@@ -51,5 +59,8 @@ export const movieDetailsSlice = createSlice({
 });
 
 export const videos = (state) => state.movieDetails.videos;
+
+export const { displayVideoPlayer, hideVideoPlayer } = movieDetailsSlice.actions;
+export const videoPlayerState = (state) => state.movieDetails.videoPlayer;
 
 export default movieDetailsSlice.reducer;
