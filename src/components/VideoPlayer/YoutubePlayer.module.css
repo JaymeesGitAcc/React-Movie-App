@@ -1,0 +1,25 @@
+.youtubePlayer_container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: #000;
+}
+
+.youtubePlayer_header {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 8px 1rem;
+}
+
+.close_btn {
+    margin-left: auto;
+}
+
+.youtubePlayer {
+    height: 100%;
+    flex-grow: 1;
+    background: transparent;
+}

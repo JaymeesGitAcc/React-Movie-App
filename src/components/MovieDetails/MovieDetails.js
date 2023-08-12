@@ -1,18 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { displayVideoPlayer, hideVideoPlayer, movieDetailsAsync, videoPlayerState } from "../../features/movieDetailsSlice";
+import {
+    detailsOb,
+    displayVideoPlayer,
+    error,
+    loading,
+    movieDetailsAsync,
+    setVideoID,
+    videoID,
+    videoPlayerState
+} from "../../features/movieDetailsSlice";
 import styles from './MovieDetails.module.css';
-import YouTube from 'react-youtube';
 import SearchBar from '../SearchBar/SearchBar';
+import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 
 const MovieDetails = () => {
 
     const { id } = useParams();
     const dispatch = useDispatch();
-    const { details, loading, error, videos } = useSelector(state => state.movieDetails);
 
+    const loader = useSelector(loading);
+    const errorFlag = useSelector(error);
+    const details = useSelector(detailsOb);
     const state = useSelector(videoPlayerState);
+    const video_id = useSelector(videoID);
+
+    const [videoId, setVideoId] = useState(null);
 
     useEffect(() => {
 
@@ -39,74 +53,87 @@ const MovieDetails = () => {
         return url;
     }
 
-    function getVideoID() {
-        const { results } = videos;
-        const trailer = results.filter(item => item.name === 'Official Trailer');
-        const trailerID = trailer ? trailer[0].key : results[0].key;
-        return trailerID;
-    }
+    // function getVideoID() {
+    //     const { results } = videos;
+    //     const trailer = results.filter(item => item.name === 'Official Trailer');
+    //     const trailerID = trailer.length ? trailer[0].key
+    //         : (results.length ? results[0].key
+    //             : null);
+    //     return trailerID;
+    // }
 
-    if (loading)
+    if (loader)
         return <div>loading...</div>
 
-    if (error)
+    if (errorFlag)
         return <div>{error}</div>
 
+    if (details.videos) {
+        const { results } = details.videos;
+        const trailer = results.filter(item => item.name === 'Official Trailer');
+        const trailerID = trailer.length ? trailer[0].key
+            : (results.length ? results[0].key
+                : null);
+        setVideoId(trailerID);
+    }
 
     return (
-        <section className={styles.movieDetails_section}
-            style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
+        <>
+            <Link to="/">Go to Home Page...</Link>
+            <SearchBar />
+            <section className={styles.movieDetails_section}
+                style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 
-            <div className={styles.movieDetails_hero}>
-                <Link to="/">Go to Home Page...</Link>
-                <SearchBar />
-                <article className={styles.details} >
-                    <div className={styles.image_container}>
-                        <img src={imageURL(details.poster_path)} alt="" />
-                    </div>
-                    <div className={styles.about_movie}>
-                        <h1>{details.title}&nbsp;
-                            {`(${releaseYear(details.release_date)})`}
-                        </h1>
-
-                        <div>
-                            <button
-                                className={`${styles.action_btn} ${styles.open_btn}`}
-                                onClick={() => dispatch(displayVideoPlayer())}
-                            >Play trailer</button>
+                <div className={styles.movieDetails_hero}>
+                    <article className={styles.details} >
+                        <div className={styles.image_container}>
+                            <img src={imageURL(details.poster_path)} alt="" />
                         </div>
-                        <h3><i>{details.tagline}</i></h3>
+                        <div className={styles.about_movie}>
+                            <h1>{details.title}&nbsp;
+                                {`(${releaseYear(details.release_date)})`}
+                            </h1>
 
-                        <div>
-                            <h3>Overview</h3>
-                            <p>{details.overview}</p>
+                            <div>
+                                <button
+                                    className={`${styles.action_btn} ${styles.open_btn}`}
+                                    onClick={() => dispatch(displayVideoPlayer())}
+                                >Play trailer</button>
+                            </div>
+                            <h3><i>{details.tagline}</i></h3>
+
+                            <div>
+                                <h3>Overview</h3>
+                                <p>{details.overview}</p>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                {state &&
-                    <section className={styles.videoPlayer_container}>
-                        <header className={styles.videoPlayer_header}>
-                            <h3>Video Player</h3>
-                            <button
-                                className={`${styles.action_btn} ${styles.close_btn}`}
-                                onClick={() => dispatch(hideVideoPlayer())}>Close</button>
-                        </header>
-                        <YouTube
-                            className={styles.videoPlayer}
-                            videoId={getVideoID()}
-                            opts={{
-                                height: '100%',
-                                width: '100%',
-                                playerVars: {
-                                    autoplay: 1,
-                                }
-                            }}
-                        />
-                    </section>
-                }
-            </div>
-        </section>
+                    {state && 
+                        // <section className={styles.videoPlayer_container}>
+                        //     <header className={styles.videoPlayer_header}>
+                        //         <h3>Video Player</h3>
+                        //         <button
+                        //             className={`${styles.action_btn} ${styles.close_btn}`}
+                        //             onClick={() => dispatch(hideVideoPlayer())}>Close</button>
+                        //     </header>
+                        //     <YouTube
+                        //         className={styles.videoPlayer}
+                        //         videoId={getVideoID()}
+                        //         opts={{
+                        //             height: '100%',
+                        //             width: '100%',
+                        //             playerVars: {
+                        //                 autoplay: 1,
+                        //             }
+                        //         }}
+                        //     />
+                        // </section>
+                        <YoutubePlayer videoId={videoId}/>
+                    }
+                </div>
+            </section>
+        </>
     );
 }
 

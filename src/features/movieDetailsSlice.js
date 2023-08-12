@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-    details: [],
+    details: {},
     loading: false,
     error: null,
     videos: null,
-    videoPlayer: false
+    videoPlayer: false,
+    videoID: null
 }
 
 const options = {
@@ -38,6 +39,9 @@ export const movieDetailsSlice = createSlice({
         },
         hideVideoPlayer: (state) => {
             state.videoPlayer = false;
+        },
+        setVideoID: (state, action) => {
+            state.videoID = action.payload;
         }
     },
     extraReducers: builder => {
@@ -54,13 +58,19 @@ export const movieDetailsSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
             state.videos = null;
+            state.details = null;
         })
     }
 });
 
 export const videos = (state) => state.movieDetails.videos;
 
-export const { displayVideoPlayer, hideVideoPlayer } = movieDetailsSlice.actions;
+export const { displayVideoPlayer, hideVideoPlayer, setVideoID } = movieDetailsSlice.actions;
+
 export const videoPlayerState = (state) => state.movieDetails.videoPlayer;
+export const detailsOb = (state) => state.movieDetails.details;
+export const error = (state) => state.movieDetails.error;
+export const loading = (state) => state.movieDetails.loading;
+export const videoID = (state) => state.movieDetails.videoID;
 
 export default movieDetailsSlice.reducer;

@@ -5,7 +5,6 @@ import Home from './components/HomePage/Home';
 import SearchResults from './components/SearchResults/SearchReults';
 import NotFound from './components/NotFound/NotFound';
 import TvShowDetails from './components/TvShowDetails/TvShowDetails';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 
 function App() {
 
@@ -20,8 +19,6 @@ function App() {
             <Route path="/results/:query" element={<SearchResults />} />
             <Route element={<NotFound />} />
           </Routes>
-
-          <VideoPlayer/>
         </div>
       </Router>
     </>
