@@ -1,24 +1,29 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './YoutubePlayer.module.css';
 import YouTube from 'react-youtube';
-import { hideVideoPlayer } from '../../features/movieDetailsSlice';
+import { hideYoutubePlayer, setYoutubeID } from '../../features/youtubePlayerSlice';
+import { useEffect } from 'react';
 
-const YoutubePlayer = (videoID) => {
+const YoutubePlayer = ({ data }) => {
 
     const dispatch = useDispatch();
-    // const [videoID, setVideoID] = useState(null);
-    // const video_ID = useSelector(videoID);
-    // useEffect(() => {
-    //     if(videosObj) {
-    //         const { results } = videosObj;
-    //         const trailer = results.filter(item => item.name === 'Official Trailer');
-    //         const trailerID = trailer.length ? trailer[0].key
-    //             : (results.length ? results[0].key
-    //                 : null);
-    //         setVideoID(trailerID);
-    //     }
-    // }, [])
 
+    const { youtubeID } = useSelector(state => state.youtubePlayer);
+
+    useEffect(() => {
+        const { results } = data.videos;
+        const officialTrailer = results.filter(item => item.name === 'Official Trailer');
+        const trailers = results.filter(item => item.type === 'Trailer');
+        const trailerID = officialTrailer.length ? officialTrailer[0].key
+            : (trailers.length ? trailers[0].key
+                : null);
+        console.log(trailerID);
+        dispatch(setYoutubeID(trailerID));
+
+        return () => { 
+            dispatch(setYoutubeID(''));
+        }
+    }, [dispatch]);
 
     return (
         <div className={styles.youtubePlayer_container}>
@@ -29,14 +34,14 @@ const YoutubePlayer = (videoID) => {
                 </div>
                 <div className={styles.close_btn}>
                     <button
-                        onClick={() => dispatch(hideVideoPlayer())}
+                        onClick={() => dispatch(hideYoutubePlayer())}
                     >Close</button>
                 </div>
             </header>
 
             <YouTube
                 className={styles.youtubePlayer}
-                videoId={videoID}
+                videoId={youtubeID}
                 opts={
                     {
                         height: '100%',

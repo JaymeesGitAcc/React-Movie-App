@@ -3,15 +3,20 @@ import styles from './TvShowDetails.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { showDetailsAsync } from '../../features/tvShowDetailsSlice';
+import { showYoutubePlayer } from '../../features/youtubePlayerSlice';
+import YoutubePlayer from '../VideoPlayer/YoutubePlayer';
+import SearchBar from '../SearchBar/SearchBar';
 
 const TvShowDetails = () => {
     const { id } = useParams();
-    const {details, loading, error} = useSelector(state => state.showDetails);
+    const { details, loading, error } = useSelector(state => state.showDetails);
     const dispatch = useDispatch();
+
+    const { playerState } = useSelector(state => state.youtubePlayer);
 
     useEffect(() => {
         dispatch(showDetailsAsync(id));
-    } ,[dispatch, id]);
+    }, [dispatch, id]);
 
     function releaseYear(dateString) {
         const date = new Date(dateString);
@@ -23,28 +28,42 @@ const TvShowDetails = () => {
         return url;
     }
 
-    if(loading)
+    if (loading)
         return <div>loading...</div>
 
-    if(error)
+    if (error)
         return <div>{error}</div>
 
-    return ( 
-        <section>
+    return (
+
+        <>
             <Link to="/">Go back to Home...</Link>
-            <h1>Tv show id: {id}</h1>
-            <div className={styles.details}>
-                <div className={styles.image_container}>
-                    <img src={imageURL(details.poster_path)} alt="" />
+            <SearchBar/>
+
+            <section className={styles.tvShowDetails_section}>
+
+                <div className={styles.details}>
+
+                    <div className={styles.image_container}>
+                        <img src={imageURL(details.poster_path)} alt="" />
+                    </div>
+                    <div className={styles.about_show}>
+                        <h1>{details.name}&nbsp;{`(${releaseYear(details.first_air_date)})`}</h1>
+
+                        <div>
+                            <button onClick={() => dispatch(showYoutubePlayer())}>Watch trailer</button>
+                        </div>
+                        
+                        <h3><i>{details.tagline}</i></h3>
+                        <p>{details.overview}</p>
+                    </div>
+
                 </div>
-                <div className={styles.about_show}>
-                    <h1>{details.name}&nbsp;{`(${releaseYear(details.first_air_date)})`}</h1>
-                    <h3><i>{details.tagline}</i></h3>
-                    <p>{details.overview}</p>
-                </div>
-            </div>
-        </section>
-     );
+
+                {playerState && details && <YoutubePlayer data={details} />}
+            </section>
+        </>
+    );
 }
- 
+
 export default TvShowDetails;

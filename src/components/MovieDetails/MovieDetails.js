@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    detailsOb,
-    displayVideoPlayer,
+    detailsObj,
     error,
     loading,
     movieDetailsAsync,
-    setVideoID,
-    videoID,
-    videoPlayerState
 } from "../../features/movieDetailsSlice";
 import styles from './MovieDetails.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
+import { showYoutubePlayer } from "../../features/youtubePlayerSlice";
 
 const MovieDetails = () => {
 
@@ -22,17 +19,14 @@ const MovieDetails = () => {
 
     const loader = useSelector(loading);
     const errorFlag = useSelector(error);
-    const details = useSelector(detailsOb);
-    const state = useSelector(videoPlayerState);
-    const video_id = useSelector(videoID);
+    const details = useSelector(detailsObj);
 
-    const [videoId, setVideoId] = useState(null);
+    const { playerState } = useSelector(state => state.youtubePlayer);
 
     useEffect(() => {
-
         dispatch(movieDetailsAsync(id));
-
     }, [dispatch, id]);
+
 
     function releaseYear(dateValue) {
         const date = new Date(dateValue);
@@ -53,34 +47,17 @@ const MovieDetails = () => {
         return url;
     }
 
-    // function getVideoID() {
-    //     const { results } = videos;
-    //     const trailer = results.filter(item => item.name === 'Official Trailer');
-    //     const trailerID = trailer.length ? trailer[0].key
-    //         : (results.length ? results[0].key
-    //             : null);
-    //     return trailerID;
-    // }
-
     if (loader)
         return <div>loading...</div>
 
     if (errorFlag)
         return <div>{error}</div>
 
-    if (details.videos) {
-        const { results } = details.videos;
-        const trailer = results.filter(item => item.name === 'Official Trailer');
-        const trailerID = trailer.length ? trailer[0].key
-            : (results.length ? results[0].key
-                : null);
-        setVideoId(trailerID);
-    }
-
     return (
         <>
             <Link to="/">Go to Home Page...</Link>
             <SearchBar />
+
             <section className={styles.movieDetails_section}
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 
@@ -97,9 +74,10 @@ const MovieDetails = () => {
                             <div>
                                 <button
                                     className={`${styles.action_btn} ${styles.open_btn}`}
-                                    onClick={() => dispatch(displayVideoPlayer())}
+                                    onClick={() => dispatch(showYoutubePlayer())}
                                 >Play trailer</button>
                             </div>
+
                             <h3><i>{details.tagline}</i></h3>
 
                             <div>
@@ -109,27 +87,8 @@ const MovieDetails = () => {
                         </div>
                     </article>
 
-                    {state && 
-                        // <section className={styles.videoPlayer_container}>
-                        //     <header className={styles.videoPlayer_header}>
-                        //         <h3>Video Player</h3>
-                        //         <button
-                        //             className={`${styles.action_btn} ${styles.close_btn}`}
-                        //             onClick={() => dispatch(hideVideoPlayer())}>Close</button>
-                        //     </header>
-                        //     <YouTube
-                        //         className={styles.videoPlayer}
-                        //         videoId={getVideoID()}
-                        //         opts={{
-                        //             height: '100%',
-                        //             width: '100%',
-                        //             playerVars: {
-                        //                 autoplay: 1,
-                        //             }
-                        //         }}
-                        //     />
-                        // </section>
-                        <YoutubePlayer videoId={videoId}/>
+                    {playerState && details &&
+                        <YoutubePlayer data={details} />
                     }
                 </div>
             </section>
