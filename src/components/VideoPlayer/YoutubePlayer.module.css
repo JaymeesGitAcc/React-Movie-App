@@ -14,12 +14,45 @@
     padding: 8px 1rem;
 }
 
+.button_container {
+    margin-left: auto;
+}
+
 .close_btn {
     margin-left: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cross_icon {
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%,
+            0% 80%,
+            20% 100%,
+            50% 70%, 80% 100%,
+            100% 80%, 70% 50%,
+            100% 20%, 80% 0%,
+            50% 30%);
+    transition: .15s;
+}
+
+.close_btn:hover .cross_icon {
+    background-color: #ccc;
 }
 
 .youtubePlayer {
     height: 100%;
     flex-grow: 1;
     background: transparent;
+}
+
+
+
+@media (min-width: 992px) {
+    .youtubePlayer_container {
+        inset: 2rem 8rem;
+    }
 }

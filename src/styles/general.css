@@ -1,4 +1,12 @@
+.row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+}
+
 .details_section {
+    max-width: 2000px;
+    margin: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -6,8 +14,8 @@
 }
 
 .article_container {
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-    min-height: 90vh;
+    background-color: rgba(0, 0, 0, .65);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,18 +27,18 @@
     min-height: 500px;
     margin: auto;
     color: #fff;
-    border: 1px solid white;
+    padding: 2rem 0;
 }
 
 .details .image_container {
     border-radius: 10px;
-    border: 1px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .image_container img {
+    max-width: 300px;
     border-radius: inherit;
 }
 
@@ -39,6 +47,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+}
+
+.main_title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.release_year {
+    font-weight: normal;
+    color: #ccc;
+}
+
+.button_container {
+    margin-bottom: .5rem;
 }
 
 .play_button {
@@ -49,11 +72,12 @@
     border-radius: 20px;
     gap: 10px;
     font-size: 1rem;
-    letter-spacing: 1px;
     font-weight: 500;
     cursor: pointer;
     background-color: transparent;
     color: #fff;
+    margin: auto;
+    transition: .15s;
 }
 
 .play_icon {
@@ -63,6 +87,7 @@
     background-color: #fff;
     transform: rotate(90deg);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transition: .15s;
 }
 
 .play_button:hover {
@@ -73,9 +98,45 @@
     background-color: #ccc;
 }
 
+.tagline {
+    font-size: 1.25rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+/* 
+===============
+Media queries
+=======
+*/
+
 @media (min-width: 768px) {
     .details {
         display: grid;
         grid-template-columns: auto auto;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .main_title {
+        font-size: 2rem;
+    }
+
+    .image_container img {
+        width: auto;
+    }
+
+    .content {
+        text-align: left;
+    }
+
+    .play_button {
+        margin: unset;
+    }
+}
+
+@media (min-width: 1440px) {
+    .details {
+        max-width: 1400px;
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import Home from './components/HomePage/Home';
-import SearchResults from './components/SearchResults/SearchReults';
+import SearchResults from './components/SearchResults/SearchResults';
 import NotFound from './components/NotFound/NotFound';
 import TvShowDetails from './components/TvShowDetails/TvShowDetails';
 

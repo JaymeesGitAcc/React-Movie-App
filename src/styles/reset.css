@@ -17,9 +17,19 @@ img {
   width: 100%;
 }
 
-.row {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d3d3d3; 
+  border-radius: 10px;
+}

@@ -7,10 +7,9 @@ import {
     loading,
     movieDetailsAsync,
 } from "../../features/movieDetailsSlice";
-import styles from './MovieDetails.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
-import { showYoutubePlayer } from "../../features/youtubePlayerSlice";
+import MovieDetailsArticle from "./MovieDetailsArticle";
 
 const MovieDetails = () => {
 
@@ -26,19 +25,6 @@ const MovieDetails = () => {
     useEffect(() => {
         dispatch(movieDetailsAsync(id));
     }, [dispatch, id]);
-
-
-    function releaseYear(dateValue) {
-        const date = new Date(dateValue);
-        return date.getFullYear();
-    }
-
-    function imageURL(path) {
-        let url;
-        if (path)
-            url = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${path}`;
-        return url;
-    }
 
     function backdgropImage(path) {
         let url;
@@ -58,39 +44,16 @@ const MovieDetails = () => {
             <Link to="/">Go to Home Page...</Link>
             <SearchBar />
 
-            <section className={styles.movieDetails_section}
+            <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 
-                <div className={styles.movieDetails_hero}>
-                    <article className={styles.details} >
-                        <div className={styles.image_container}>
-                            <img src={imageURL(details.poster_path)} alt="" />
-                        </div>
-                        <div className={styles.about_movie}>
-                            <h1>{details.title}&nbsp;
-                                {`(${releaseYear(details.release_date)})`}
-                            </h1>
-
-                            <div>
-                                <button
-                                    className={`${styles.action_btn} ${styles.open_btn}`}
-                                    onClick={() => dispatch(showYoutubePlayer())}
-                                >Play trailer</button>
-                            </div>
-
-                            <h3><i>{details.tagline}</i></h3>
-
-                            <div>
-                                <h3>Overview</h3>
-                                <p>{details.overview}</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    {playerState && details &&
-                        <YoutubePlayer data={details} />
-                    }
+                <div className="article_container">
+                    {details && <MovieDetailsArticle details={details} />}
                 </div>
+
+                {playerState && details &&
+                    <YoutubePlayer data={details} />
+                }
             </section>
         </>
     );
