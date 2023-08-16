@@ -1,0 +1,17 @@
+.banner_section {
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
+
+.content_wrapper {
+    min-height: 250px;
+    padding: 1rem;
+    background-color: rgba(0, 19, 105, 0.74);
+}
+
+.banner_text {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}

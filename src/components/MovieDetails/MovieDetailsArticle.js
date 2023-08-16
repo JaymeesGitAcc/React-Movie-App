@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { showYoutubePlayer } from "../../features/youtubePlayerSlice";
+import Facts from "../Facts/Facts";
 
 const MovieDetailsArticle = ({details}) => {
 
@@ -26,6 +27,8 @@ const MovieDetailsArticle = ({details}) => {
                 <h1 className="main_title">{details.title}&nbsp;
                     <span className="release_year">{`(${releaseYear(details.release_date)})`}</span>
                 </h1>
+
+                <Facts details={details}/>
 
                 <div className="button_container">
                     <button

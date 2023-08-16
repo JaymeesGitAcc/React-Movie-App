@@ -1,0 +1,45 @@
+.facts {
+    margin-bottom: 1rem;
+}
+
+.releaseDate, .genres {
+    margin-bottom: .5rem;
+}
+
+.genres {
+    list-style-type: none;
+    display: flex;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.listItem {
+    flex-grow: 1;
+    padding: 0 4px;
+}
+
+.listItem p {
+    font-size: 11px;
+}
+
+.listItem + .listItem {
+    border-left: 1px solid #fff;
+}
+
+@media (min-width: 480px) {
+    .facts {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+@media (min-width: 768px) {
+    .facts {
+        justify-content: unset;
+    }
+
+    .releaseDate, .genres {
+        margin-bottom: 0;
+    }
+}

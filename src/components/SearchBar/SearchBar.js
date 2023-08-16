@@ -24,7 +24,7 @@ const SearchBar = () => {
                 />
                 <input
                     type="submit"
-                    value="Submit"
+                    value="Search"
                     className={styles.submit_btn}
                 />
             </form>

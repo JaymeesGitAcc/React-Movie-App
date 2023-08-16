@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
     detailsObj,
@@ -7,9 +7,10 @@ import {
     loading,
     movieDetailsAsync,
 } from "../../features/movieDetailsSlice";
-import SearchBar from '../SearchBar/SearchBar';
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import MovieDetailsArticle from "./MovieDetailsArticle";
+import Header from "../Header/Header";
+import SearchBar from "../SearchBar/SearchBar";
 
 const MovieDetails = () => {
 
@@ -41,9 +42,8 @@ const MovieDetails = () => {
 
     return (
         <>
-            <Link to="/">Go to Home Page...</Link>
-            <SearchBar />
-
+            <Header/>
+            <SearchBar/>
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 
