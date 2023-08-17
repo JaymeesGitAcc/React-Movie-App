@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { searchSliceAsync } from '../../features/searchSlice';
 import styles from './SearchResults.module.css';
 import ResultArticle from './ResultArticle';
+import Header from '../Header/Header';
 
 const SearchResults = () => {
 
@@ -22,16 +23,19 @@ const SearchResults = () => {
         return <div>{error}</div>
 
     return (
-        <section className={styles.searchResults_section}>
-            <Link to="/">Go back to home...</Link>
-            <h1>Search Results related to :{query}</h1>
-            {
-                data.results &&
-                data.results.map(result => {
-                    return <ResultArticle  key={result.id} result={result}/>
-                })
-            }
-        </section>
+        <>
+            <Header/>
+            
+            <section className={styles.searchResults_section}>
+                <h1>Search Results related to :{query}</h1>
+                {
+                    data.results &&
+                    data.results.map(result => {
+                        return <ResultArticle key={result.id} result={result} />
+                    })
+                }
+            </section>
+        </>
     );
 }
 

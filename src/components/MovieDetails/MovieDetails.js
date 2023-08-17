@@ -10,7 +10,6 @@ import {
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import MovieDetailsArticle from "./MovieDetailsArticle";
 import Header from "../Header/Header";
-import SearchBar from "../SearchBar/SearchBar";
 
 const MovieDetails = () => {
 
@@ -43,7 +42,6 @@ const MovieDetails = () => {
     return (
         <>
             <Header/>
-            <SearchBar/>
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 

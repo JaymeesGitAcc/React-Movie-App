@@ -1,10 +1,10 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { showDetailsAsync } from '../../features/tvShowDetailsSlice';
 import YoutubePlayer from '../VideoPlayer/YoutubePlayer';
-import SearchBar from '../SearchBar/SearchBar';
 import TvShowDetailsArticle from './TvShowDetailsArticle';
+import Header from '../Header/Header';
 
 const TvShowDetails = () => {
 
@@ -32,8 +32,7 @@ const TvShowDetails = () => {
 
     return (
         <>
-            <Link to="/">Go back to Home...</Link>
-            <SearchBar />
+            <Header/>
 
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
