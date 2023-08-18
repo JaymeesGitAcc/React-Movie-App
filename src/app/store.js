@@ -5,6 +5,7 @@ import movieDetailsReducer from '../features/movieDetailsSlice';
 import showDetailsReducer from '../features/tvShowDetailsSlice';
 import searchResultsReducer from '../features/searchSlice';
 import youtubePlayerReducer from '../features/youtubePlayerSlice';
+import personDetailsReducer from '../features/personDetailsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     showDetails: showDetailsReducer,
     searchResults: searchResultsReducer,
     youtubePlayer: youtubePlayerReducer,
+    personDetails: personDetailsReducer,
   }
 });

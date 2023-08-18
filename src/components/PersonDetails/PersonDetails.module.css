@@ -1,0 +1,15 @@
+.flex {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto 2fr;
+    gap: 20px;
+}
+
+.image_container {
+    border-radius: 10px;
+}
+
+.image_container img {
+    border-radius: inherit;
+}

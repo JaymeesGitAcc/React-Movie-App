@@ -4,11 +4,11 @@ import styles from './SearchResults.module.css';
 const ResultArticle = ({ result }) => {
 
     function getOverview(content) {
-        if(content) {
+        if (content) {
             const maxWords = 15;
             const textContent = content.trim();
             const words = textContent.split(' ');
-    
+
             if (words.length > maxWords) {
                 const limitedWords = words.slice(0, maxWords);
                 const limitedText = limitedWords.join(' ');
@@ -18,14 +18,25 @@ const ResultArticle = ({ result }) => {
         return content;
     }
 
+    function imageURL(imageId) {
+        if(imageId) {
+            const url = `https://www.themoviedb.org/t/p/w94_and_h141_bestv2/${imageId}`;
+            return url;
+        }   
+        return null;
+    }
 
     return (
         <article className={styles.result_item}>
             <div className={styles.image_container}>
-                    <img
-                        src={`https://www.themoviedb.org/t/p/w94_and_h141_bestv2/${result.poster_path}`}
-                        alt={result.title ? result.title : result.name}
-                    />
+                <img
+                    src={
+                        result.poster_path ?
+                        imageURL(result.poster_path) :
+                        imageURL(result.profile_path)
+                    }
+                    alt={result.title ? result.title : result.name}
+                />
             </div>
 
             <div className={styles.details}>
@@ -36,7 +47,7 @@ const ResultArticle = ({ result }) => {
                 </Link>
                 <p>
                     {getOverview(result.overview)}...
-                    <Link 
+                    <Link
                         className={styles.know_more}
                         to={`/${result.media_type}/${result.id}`}>know more</Link>
                 </p>

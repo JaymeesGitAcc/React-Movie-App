@@ -5,6 +5,7 @@ import Home from './components/HomePage/Home';
 import SearchResults from './components/SearchResults/SearchResults';
 import NotFound from './components/NotFound/NotFound';
 import TvShowDetails from './components/TvShowDetails/TvShowDetails';
+import PersonDetails from './components/PersonDetails/PersonDetails';
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
             <Route path="/movie/:id" element={<MovieDetails />} />
             <Route path="/tv/:id" element={<TvShowDetails />} />
             <Route path="/results/:query" element={<SearchResults />} />
-            <Route element={<NotFound />} />
+            <Route path="/person/:personID" element={<PersonDetails/>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </Router>
