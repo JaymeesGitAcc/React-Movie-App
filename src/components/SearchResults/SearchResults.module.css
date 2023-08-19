@@ -15,7 +15,9 @@
 
 .image_container {
     height: 141px;
-    border-radius: inherit;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: #d3d3d3;
 }
 
 .image_container img {

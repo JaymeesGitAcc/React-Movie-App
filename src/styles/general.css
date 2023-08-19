@@ -102,6 +102,16 @@
     margin-bottom: 1rem;
 }
 
+.recommendations_container {
+    display: flex;
+    gap: 1rem;
+    overflow: auto;
+}
+
+.image_box {
+    width: 185px;
+}
+
 /* 
 ===============
 Media queries

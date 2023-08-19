@@ -12,7 +12,7 @@ const ResultArticle = ({ result }) => {
             if (words.length > maxWords) {
                 const limitedWords = words.slice(0, maxWords);
                 const limitedText = limitedWords.join(' ');
-                return limitedText;
+                return `${limitedText}...`;
             }
         }
         return content;
@@ -46,7 +46,7 @@ const ResultArticle = ({ result }) => {
                     </p>
                 </Link>
                 <p>
-                    {getOverview(result.overview)}...
+                    {getOverview(result.overview)}
                     <Link
                         className={styles.know_more}
                         to={`/${result.media_type}/${result.id}`}>know more</Link>

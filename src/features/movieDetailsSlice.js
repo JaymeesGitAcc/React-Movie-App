@@ -3,7 +3,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
     details: {},
     loading: false,
-    error: null
+    error: null,
+
+    recommendations: {
+        loadingRec: false,
+        RecData: {},
+        RecError: null
+    }
 }
 
 const options = {
@@ -19,6 +25,19 @@ export const movieDetailsAsync = createAsyncThunk(
     async (args, { rejectWithValue }) => {
         try {
             const data = await fetch(`https://api.themoviedb.org/3/movie/${args}?append_to_response=videos`, options);
+            const res = await data.json();
+            return res;
+        } catch (error) {
+            return rejectWithValue('Oops! Unable to fetch details');
+        }   
+    }
+);
+
+export const movieRecommendations = createAsyncThunk(
+    'movieRecommendations',
+    async (args, { rejectWithValue }) => {
+        try {
+            const data = await fetch(`https://api.themoviedb.org/3/movie/${args}/recommendations?language=en-US&page=1`, options);
             const res = await data.json();
             return res;
         } catch (error) {
@@ -44,6 +63,17 @@ export const movieDetailsSlice = createSlice({
             state.loading = false;
             state.details = {};
         })
+        .addCase(movieRecommendations.pending, (state) => {
+            state.recommendations.loadingRec = true;
+        })
+        .addCase(movieRecommendations.fulfilled, (state, action) => {
+            state.recommendations.loadingRec = false;
+            state.recommendations.RecData = action.payload;
+        })
+        .addCase(movieRecommendations.rejected, (state, action) => {
+            state.recommendations.loadingRec = false;
+            state.recommendations.RecError = action.payload;
+        })
     }
 });
 
@@ -53,5 +83,7 @@ export const videoPlayerState = (state) => state.movieDetails.videoPlayer;
 export const detailsObj = (state) => state.movieDetails.details;
 export const error = (state) => state.movieDetails.error;
 export const loading = (state) => state.movieDetails.loading;
+
+export const moviesRec = (state) => state.movieDetails.recommendations.RecData; 
 
 export default movieDetailsSlice.reducer;

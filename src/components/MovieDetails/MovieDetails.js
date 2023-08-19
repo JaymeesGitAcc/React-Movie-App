@@ -6,10 +6,12 @@ import {
     error,
     loading,
     movieDetailsAsync,
+    movieRecommendations,
 } from "../../features/movieDetailsSlice";
 import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import MovieDetailsArticle from "./MovieDetailsArticle";
 import Header from "../Header/Header";
+import RecommendedMovies from "./RecommendedMovies";
 
 const MovieDetails = () => {
 
@@ -24,6 +26,7 @@ const MovieDetails = () => {
 
     useEffect(() => {
         dispatch(movieDetailsAsync(id));
+        dispatch(movieRecommendations(id));
     }, [dispatch, id]);
 
     function backdgropImage(path) {
@@ -53,6 +56,8 @@ const MovieDetails = () => {
                     <YoutubePlayer data={details} />
                 }
             </section>
+
+            <RecommendedMovies/>
         </>
     );
 }

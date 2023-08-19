@@ -18,7 +18,7 @@ const SearchBar = () => {
             <form onSubmit={handleSubmit} className={styles.form}>
                 <input
                     type="text"
-                    placeholder='search movie, tv series...'
+                    placeholder='search movie, tv series, person...'
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />

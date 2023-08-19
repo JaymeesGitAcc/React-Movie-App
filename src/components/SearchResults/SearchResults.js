@@ -24,16 +24,18 @@ const SearchResults = () => {
 
     return (
         <>
-            <Header/>
-            
+            <Header />
+
             <section className={styles.searchResults_section}>
                 <h1>Search Results related to :{query}</h1>
-                {
-                    data.results &&
-                    data.results.map(result => {
-                        return <ResultArticle key={result.id} result={result} />
-                    })
-                }
+                <div className={styles.resultItems_container}>
+                    {
+                        data.results &&
+                        data.results.map(result => {
+                            return <ResultArticle key={result.id} result={result} />
+                        })
+                    }
+                </div>
             </section>
         </>
     );
