@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import trendingMoviesReducer from '../features/trendingMovies/trendingMoviesSlice';
-import trendingShowsReducer from '../features/trendingTvShows/trendingShowsSlice';
+import trendingMoviesReducer from '../features/trendingMoviesSlice';
+import trendingShowsReducer from '../features/trendingShowsSlice';
 import movieDetailsReducer from '../features/movieDetailsSlice';
 import showDetailsReducer from '../features/tvShowDetailsSlice';
 import searchResultsReducer from '../features/searchSlice';

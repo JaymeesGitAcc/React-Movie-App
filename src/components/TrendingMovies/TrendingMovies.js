@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { trendingMoviesAsync } from '../trendingMoviesSlice';
+import { trendingMoviesAsync } from '../../features/trendingMoviesSlice';
 import { useEffect, useState } from 'react';
-import Card from '../../../components/Card/Card';
-import styles from '../TrendingMovies/TrendingMovies.module.css';
+import Card from '../Card/Card';
+import styles from './TrendingMovies.module.css';
 
 const TrendingMovies = () => {
 

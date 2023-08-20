@@ -1,5 +1,5 @@
-import TrendingMovies from "../../features/trendingMovies/TrendingMovies/TrendingMovies";
-import TrendingShows from "../../features/trendingTvShows/TrendingShows/TrendingShows";
+import TrendingMovies from "../TrendingMovies/TrendingMovies";
+import TrendingShows from "../TrendingShows/TrendingShows";
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 

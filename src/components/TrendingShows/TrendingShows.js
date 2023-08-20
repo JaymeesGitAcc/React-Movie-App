@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { trendingShowsAsync } from '../trendingShowsSlice';
+import { trendingShowsAsync } from '../../features/trendingShowsSlice';
 import { Link } from 'react-router-dom';
 import styles from './TrendingShows.module.css';
 import { useEffect, useState } from 'react';
