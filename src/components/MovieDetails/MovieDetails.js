@@ -27,6 +27,7 @@ const MovieDetails = () => {
     useEffect(() => {
         dispatch(movieDetailsAsync(id));
         dispatch(movieRecommendations(id));
+
     }, [dispatch, id]);
 
     function backdgropImage(path) {
@@ -45,6 +46,7 @@ const MovieDetails = () => {
     return (
         <>
             <Header/>
+            
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 

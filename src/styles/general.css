@@ -4,9 +4,13 @@
     overflow-x: auto;
 }
 
+.text_small {
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .details_section {
     max-width: 2000px;
-    margin: 2rem auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -103,13 +107,45 @@
 }
 
 .recommendations_container {
-    display: flex;
-    gap: 1rem;
-    overflow: auto;
+    width: 95%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.rec_heading {
+    margin: 2rem 0;
+    color: #000029;
+}
+
+.recommendations_container h1 {
+    margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .image_box {
-    width: 185px;
+    width: 250px;
+    min-height: 139px;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image_box img {
+    max-width: 100%;
+    border-radius: inherit;
+    transition: 0.4s;
+}
+
+.image_box img:hover {
+    transform: scale(1.1);
+}
+
+.recArticle {
+    margin-bottom: 1rem;
+}
+
+.recArticle_text {
+    font-weight: 500;
 }
 
 /* 

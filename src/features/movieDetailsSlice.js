@@ -77,13 +77,12 @@ export const movieDetailsSlice = createSlice({
     }
 });
 
-export const { displayVideoPlayer, hideVideoPlayer, setVideoID } = movieDetailsSlice.actions;
-
-export const videoPlayerState = (state) => state.movieDetails.videoPlayer;
 export const detailsObj = (state) => state.movieDetails.details;
 export const error = (state) => state.movieDetails.error;
 export const loading = (state) => state.movieDetails.loading;
 
 export const moviesRec = (state) => state.movieDetails.recommendations.RecData; 
+export const loadingRec = (state) => state.movieDetails.recommendations.loadingRec;
+export const recError = (state) => state.movieDetails.recommendations.RecError;
 
 export default movieDetailsSlice.reducer;
