@@ -6,6 +6,8 @@ import showDetailsReducer from '../features/tvShowDetailsSlice';
 import searchResultsReducer from '../features/searchSlice';
 import youtubePlayerReducer from '../features/youtubePlayerSlice';
 import personDetailsReducer from '../features/personDetailsSlice';
+import movieListReducer from '../features/moviesListSlice';
+import tvShowListReducer from '../features/tvShowListSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +18,7 @@ export const store = configureStore({
     searchResults: searchResultsReducer,
     youtubePlayer: youtubePlayerReducer,
     personDetails: personDetailsReducer,
+    movieList: movieListReducer,
+    tvShowList: tvShowListReducer,
   }
 });

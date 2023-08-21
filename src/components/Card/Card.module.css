@@ -1,12 +1,18 @@
 .image_container {
     width: 150px;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .image_container img {
     border-radius: inherit;
+    transition: 0.4s;
 }
 
 .card_text {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0;
+}
+
+.image_container:hover .card_image {
+    transform: scale(1.1);
 }

@@ -1,0 +1,52 @@
+.navbar {
+    margin-left: 2rem;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+}
+
+.navList > li {
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    padding: 4px 0;
+}
+
+.navList_item > a {
+    color: #fff;
+}
+
+.navList_item + .navList_item {
+    margin-left: 2rem;
+}
+
+.subList {
+    display: none;
+    position: absolute;
+    top: 100%;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 4px;
+    min-width: 160px;
+    padding: 8px 0;
+    border: 1px solid lightgray;
+    z-index: 1;
+}
+
+.subList li {
+    color: #000;
+    font-weight: normal;
+    padding: 6px 1rem;
+}
+
+/* On Hover */
+.navList li:hover .subList {
+    display: block;
+}
+
+.subList li:hover {
+    background: #f7f5f5;
+}
