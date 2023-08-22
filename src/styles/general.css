@@ -167,22 +167,33 @@
 }
 
 .listArticle {
-    display: flex;
+    display: grid;
+    grid-template-columns: 94px auto;
     margin-bottom: 1rem;
     border-radius: 8px;
     box-shadow: 1px 1px 4px lightgray;
 }
 
 .listArticle_image {
-    width: 94px;
+    height: 141px;
     background-color: #ccc;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.listArticle_image img {
+    height: 100%;
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
 }
 
-.listArticle_image img {
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
+.listArticle_info {
+    padding: 1rem 6px;
+}
+
+.listArticle_date {
+    margin-bottom: 1rem;
+    color: #2f4f4f;
 }
 
 /* 
@@ -229,12 +240,17 @@ Media queries
 
     .listArticle_image {
         width: 100%;
+        height: auto;
         border-bottom-left-radius: 0;
         border-top-right-radius: 8px;
     }
     
     .listArticle_image img {
         border-top-right-radius: inherit;
+    }
+
+    .listArticle_overview {
+        display: none;
     }
 }
 
