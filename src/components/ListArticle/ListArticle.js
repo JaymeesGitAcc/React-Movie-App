@@ -23,38 +23,42 @@ const ListArticle = ({ item }) => {
         return content;
     }
 
-    function resolveMediaType(item) {
+    function navigateToDetailsPage() {
         const media_type = item.title ? 'movie' : 'tv';
         const id = item.id;
         return `/${media_type}/${id}`;
     }
 
-    function resolveDate(item) {
+    function resolveDate() {
         const dateString = item.release_date ? item.release_date : item.first_air_date;
         const dateObj = new Date(dateString);
         const date = dateObj.getDay();
-        const monthName = dateObj.toLocaleString('en-US', {month: 'short'});
+        const monthName = dateObj.toLocaleString('en-US', { month: 'short' });
         const year = dateObj.getFullYear();
         return `${date} ${monthName}, ${year}`;
     }
 
     return (
         <article className="listArticle">
-            <div className="listArticle_image">
-                <Link to={resolveMediaType(item)}>
-                    <img src={imageUrl(item.poster_path)} alt={item.title ? item.title : item.name} />
-                </Link>
-            </div>
+            <Link to={navigateToDetailsPage()}>
+                <div className="listArticle_image">
+                    <img
+                        className="image"
+                        src={imageUrl(item.poster_path)}
+                        alt={item.title ? item.title : item.name} />
+                </div>
+            </Link>
 
             <div className="listArticle_info">
-                <p className="text_small listArticle_title">{item.title ? item.title : item.name}</p>
-
-                <p className="listArticle_date text_small">{resolveDate(item)}</p>
+                <Link to={navigateToDetailsPage()}>
+                    <p className="text_small listArticle_title">{item.title ? item.title : item.name}</p>
+                </Link>
+                <p className="listArticle_date text_small">{resolveDate()}</p>
 
                 <div className="listArticle_overview">
                     <p>
                         {getOverview(item.overview)}
-                        <Link to={resolveMediaType(item)}>know more</Link>
+                        <Link to={navigateToDetailsPage()} className="know_more">know more</Link>
                     </p>
                 </div>
             </div>
