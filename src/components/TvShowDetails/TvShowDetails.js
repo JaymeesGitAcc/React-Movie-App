@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { showDetailsAsync } from '../../features/tvShowDetailsSlice';
+import { showDetailsAsync, tvShowRecommendations } from '../../features/tvShowDetailsSlice';
 import YoutubePlayer from '../VideoPlayer/YoutubePlayer';
 import TvShowDetailsArticle from './TvShowDetailsArticle';
 import Header from '../Header/Header';
+import RecommendedTvShows from './RecommendedTvShows';
 
 const TvShowDetails = () => {
 
@@ -16,6 +17,7 @@ const TvShowDetails = () => {
 
     useEffect(() => {
         dispatch(showDetailsAsync(id));
+        dispatch(tvShowRecommendations(id));
     }, [dispatch, id]);
 
 
@@ -43,6 +45,8 @@ const TvShowDetails = () => {
 
                 {playerState && details && <YoutubePlayer data={details} />}
             </section>
+
+            <RecommendedTvShows />
         </>
     );
 }

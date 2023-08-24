@@ -1,3 +1,14 @@
+select {
+    margin-bottom: 2rem;
+    border: none;
+    padding: 4px 8px;
+    outline: none;
+    border: 2px solid;
+    font-weight: 500;
+}
+
+
+
 .row {
     display: flex;
     gap: 15px;
@@ -155,10 +166,6 @@
 .listing_section h1 {
     margin: 2rem;
 }
-
-/* .listing_section--heading {
-    
-} */
 
 .list_container {
     width: 95%;

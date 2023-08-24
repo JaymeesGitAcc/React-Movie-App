@@ -8,20 +8,24 @@ const TrendingShows = () => {
 
     const { list, loading, error } = useSelector(state => state.trendingShows);
     const dispatch = useDispatch();
-    const [weekDay, setWeekDay] = useState('day');
+    const [selectedOption, setSelectedOption] = useState('day');
 
     useEffect(() => {
-        dispatch(trendingShowsAsync(weekDay));
-    }, [dispatch, weekDay]);
+        dispatch(trendingShowsAsync(selectedOption));
+    }, [dispatch, selectedOption]);
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     return (
         <section className={styles.trendingShows_section}>
             <h1 className={styles.section_title}>Trending TV shows</h1>
 
-            <div className={styles.buttons_container}>
-                <button onClick={() => setWeekDay('day')}>Today</button>
-                <button onClick={() => setWeekDay('week')}>This Week</button>
-            </div>
+            <select value={selectedOption} onChange={handleSelectChange}>
+                <option value="day">Today</option>
+                <option value="week">This Week</option>
+            </select>
 
             {error !== null && <div>{error}</div>}
 

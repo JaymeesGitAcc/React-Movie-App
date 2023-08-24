@@ -7,30 +7,35 @@ import styles from './TrendingMovies.module.css';
 const TrendingMovies = () => {
 
     const { list, loading, error } = useSelector((state) => state.trendingMovies);
-    const [weekDay, setWeekDay] = useState('day');
+
+    const [selectedOption, setSelectedOption] = useState('day');
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(trendingMoviesAsync(weekDay));
-    }, [dispatch, weekDay])
+        dispatch(trendingMoviesAsync(selectedOption));
+    }, [dispatch, selectedOption])
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     return (
         <section className={styles.trendingMovies_section}>
 
             <h1 className={styles.section_title}>Trending Movies</h1>
 
-            <div className={`${styles.buttons_container}`}>
-                <button onClick={() => setWeekDay('day')}>Today</button>
-                <button onClick={() => setWeekDay('week')}>This Week</button>
-            </div>
+            <select value={selectedOption} onChange={handleSelectChange}>
+                <option value="day">Today</option>
+                <option value="week">This Week</option>
+            </select>
 
             {loading && <div>loading....</div>}
 
             {error !== null && <div>{error}</div>}
 
             {
-                list.results && 
+                list.results &&
                 <div className={`${styles.padding_topBottom} row`}>
                     {
                         list.results.map((movie) => {
