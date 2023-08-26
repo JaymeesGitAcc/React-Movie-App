@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"; 
 import styles from './Header.module.css';
 import NavBar from "../NavBar/NavBar";
+import HamButton from "../HamButton/HamButton";
 
 const Header = () => {
     return ( 
@@ -12,6 +13,8 @@ const Header = () => {
             </div>
 
             <NavBar />
+
+            <HamButton />
         </header>
      );
 }

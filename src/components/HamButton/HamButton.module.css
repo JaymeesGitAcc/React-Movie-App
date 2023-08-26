@@ -1,0 +1,20 @@
+.hamButton {
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.hamButton > div {
+    width: 30px;
+    height: 4px;
+    background-color: #999;
+}
+
+.line + .line {
+    margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+    .hamButton {
+        display: none;
+    }
+}

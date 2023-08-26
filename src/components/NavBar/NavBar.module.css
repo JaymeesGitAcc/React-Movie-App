@@ -1,3 +1,7 @@
+.navbar_container {
+    display: none;
+}
+
 .navbar {
     margin-left: 2rem;
 }
@@ -50,3 +54,16 @@
 .subList li:hover {
     background: #f7f5f5;
 }
+
+/* 
+===============
+Media Queries
+=======
+*/
+
+@media (min-width: 768px) {
+    .navbar_container {
+        display: block;
+    }
+}
+

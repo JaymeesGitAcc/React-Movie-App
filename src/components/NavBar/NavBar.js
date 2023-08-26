@@ -14,28 +14,30 @@ const NavBar = () => {
     };
 
     return (
-        <nav className={styles.navbar}>
+        <div className={styles.navbar_container}>
+            <nav className={styles.navbar}>
 
-            <ul className={styles.navList}>
-                <li className={styles.navList_item}>
-                    <Link to='/'>Home</Link>
-                </li>
+                <ul className={styles.navList}>
+                    <li className={styles.navList_item}>
+                        <Link to='/'>Home</Link>
+                    </li>
 
-                <li className={styles.navList_item}>
-                    Movies
-                    <div className={styles.subList_container}>
-                        <SubList innerList={subList_1} />
-                    </div>
-                </li>
-                <li className={styles.navList_item}>
-                    TV Shows
-                    <div className={styles.subList_container}>
-                        <SubList innerList={subList_2} />
-                    </div>
-                </li>
-            </ul>
+                    <li className={styles.navList_item}>
+                        Movies
+                        <div className={styles.subList_container}>
+                            <SubList innerList={subList_1} />
+                        </div>
+                    </li>
+                    <li className={styles.navList_item}>
+                        TV Shows
+                        <div className={styles.subList_container}>
+                            <SubList innerList={subList_2} />
+                        </div>
+                    </li>
+                </ul>
 
-        </nav>
+            </nav>
+        </div>
     );
 }
 

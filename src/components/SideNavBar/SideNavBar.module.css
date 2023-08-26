@@ -1,0 +1,118 @@
+.sideNav {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 19, 105, 0.87);
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: 0.4s;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.show {
+    transform: translateX(0);
+}
+
+.menu_container {
+    position: relative;
+    padding: 1rem;
+}
+
+.sideNav a {
+    color: #fff;
+}
+
+.sideNav ul {
+    list-style: none;
+}
+
+.sideNav ul a {
+    color: #fff;
+}
+
+.close_btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+}
+
+.cross {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    clip-path: polygon(20% 0%,
+            0% 20%,
+            30% 50%,
+            0% 80%,
+            20% 100%,
+            50% 70%,
+            80% 100%,
+            100% 80%,
+            70% 50%,
+            100% 20%,
+            80% 0%,
+            50% 30%);
+}
+
+.homePage_btn {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.subMenu {
+    margin-bottom: 1rem;
+}
+
+.subMenu button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.listContainer_1, .listContainer_2 {
+    display: none;
+    background-color: #041b81;
+    border: 1px solid #008b8b;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.subMenu ul li {
+    margin-bottom: 1rem;
+}
+
+.subMenu ul a {
+    color: #07cece;
+    font-weight: 500;
+}
+
+.showList {
+    display: block;
+}
+
+/*
+============== 
+Media Queries
+=======
+ */
+
+@media (min-width: 768px) {
+    .sideNav {
+        display: none;
+    }
+}

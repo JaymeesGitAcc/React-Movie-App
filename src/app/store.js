@@ -8,6 +8,7 @@ import youtubePlayerReducer from '../features/youtubePlayerSlice';
 import personDetailsReducer from '../features/personDetailsSlice';
 import movieListReducer from '../features/moviesListSlice';
 import tvShowListReducer from '../features/tvShowListSlice';
+import sideNavBarReducer from '../features/sideNavSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     personDetails: personDetailsReducer,
     movieList: movieListReducer,
     tvShowList: tvShowListReducer,
+    sideNav: sideNavBarReducer,
   }
 });

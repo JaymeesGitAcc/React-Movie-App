@@ -8,6 +8,7 @@ import TvShowDetails from './components/TvShowDetails/TvShowDetails';
 import PersonDetails from './components/PersonDetails/PersonDetails';
 import MovieList from './components/MovieList/MovieList';
 import TvShowList from './components/TvShowList/TvShowList';
+import SideNavBar from './components/SideNavBar/SideNavBar';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
             <Route path= "/shows/:show_by" element={<TvShowList/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
+
+          <SideNavBar />
         </div>
       </Router>
     </>
