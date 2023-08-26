@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import styles from './PersonDetails.module.css';
 import { errorMessage, loader, personData, personDetailsAsync } from '../../features/personDetailsSlice';
 import { useEffect } from 'react';
+import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
 
 const PersonDetails = () => {
 
@@ -43,7 +44,7 @@ const PersonDetails = () => {
     return (
         <>
             <Header />
-
+            <SearchBarPrimary />
             <section className={styles.details_section}>
                 <div className={styles.info_container}>
 

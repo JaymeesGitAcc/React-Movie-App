@@ -12,6 +12,7 @@ import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
 import MovieDetailsArticle from "./MovieDetailsArticle";
 import Header from "../Header/Header";
 import RecommendedMovies from "./RecommendedMovies";
+import SearchBarPrimary from "../SearchBarPrimary/SearchBarPrimary";
 
 const MovieDetails = () => {
 
@@ -45,8 +46,10 @@ const MovieDetails = () => {
 
     return (
         <>
-            <Header/>
-            
+            <Header />
+
+            <SearchBarPrimary />
+
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>
 
@@ -59,7 +62,7 @@ const MovieDetails = () => {
                 }
             </section>
 
-            <RecommendedMovies/>
+            <RecommendedMovies />
         </>
     );
 }

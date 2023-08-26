@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { tvShowListAsync } from "../../features/tvShowListSlice";
 import Header from "../Header/Header";
+import SearchBarPrimary from "../SearchBarPrimary/SearchBarPrimary";
 
 const TvShowList = () => {
 
@@ -28,6 +29,7 @@ const TvShowList = () => {
     return ( 
         <React.Fragment>
             <Header />
+            <SearchBarPrimary />
             <section className='listing_section'>
                 <h1>{show_by} TV Shows</h1>
                 <div className='list_container'>

@@ -6,6 +6,7 @@ import YoutubePlayer from '../VideoPlayer/YoutubePlayer';
 import TvShowDetailsArticle from './TvShowDetailsArticle';
 import Header from '../Header/Header';
 import RecommendedTvShows from './RecommendedTvShows';
+import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
 
 const TvShowDetails = () => {
 
@@ -35,6 +36,8 @@ const TvShowDetails = () => {
     return (
         <>
             <Header/>
+
+            <SearchBarPrimary />
 
             <section className="details_section"
                 style={{ backgroundImage: `url(${backdgropImage(details.backdrop_path)})` }}>

@@ -19,25 +19,27 @@ const ResultArticle = ({ result }) => {
     }
 
     function imageURL(imageId) {
-        if(imageId) {
+        if (imageId) {
             const url = `https://www.themoviedb.org/t/p/w94_and_h141_bestv2/${imageId}`;
             return url;
-        }   
+        }
         return null;
     }
 
     return (
         <article className={styles.result_item}>
-            <div className={styles.image_container}>
-                <img
-                    src={
-                        result.poster_path ?
-                        imageURL(result.poster_path) :
-                        imageURL(result.profile_path)
-                    }
-                    alt={result.title ? result.title : result.name}
-                />
-            </div>
+            <Link  to={`/${result.media_type}/${result.id}`}>
+                <div className={styles.image_container}>
+                    <img
+                        src={
+                            result.poster_path ?
+                                imageURL(result.poster_path) :
+                                imageURL(result.profile_path)
+                        }
+                        alt={result.title ? result.title : result.name}
+                    />
+                </div>
+            </Link>
 
             <div className={styles.details}>
                 <Link to={`/${result.media_type}/${result.id}`}>
@@ -47,9 +49,6 @@ const ResultArticle = ({ result }) => {
                 </Link>
                 <p>
                     {getOverview(result.overview)}
-                    <Link
-                        className={styles.know_more}
-                        to={`/${result.media_type}/${result.id}`}>know more</Link>
                 </p>
             </div>
         </article>

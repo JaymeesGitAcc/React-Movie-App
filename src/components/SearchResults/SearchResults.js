@@ -5,6 +5,7 @@ import { searchSliceAsync } from '../../features/searchSlice';
 import styles from './SearchResults.module.css';
 import ResultArticle from './ResultArticle';
 import Header from '../Header/Header';
+import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
 
 const SearchResults = () => {
 
@@ -26,6 +27,7 @@ const SearchResults = () => {
         <>
             <Header />
 
+            <SearchBarPrimary />
             <section className={styles.searchResults_section}>
                 <h1>Search Results related to :{query}</h1>
                 <div className={styles.resultItems_container}>

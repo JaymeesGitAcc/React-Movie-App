@@ -1,13 +1,12 @@
 .form_container {
     max-width: 1000px;
     margin: auto;
-    border: 2px solid #001369;
 }
 
 .form {
     width: inherit;
     display: grid;
-    grid-template-columns: 90% auto;
+    grid-template-columns: 75% auto;
 }
 
 .form input {
@@ -17,10 +16,23 @@
     padding: 0.6em 0.4em;
 }
 
+.inputField {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
 .submit_btn {
     border: none;
     cursor: pointer;
     font-weight: 500;
     background-color: #001369;
     color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+@media (min-width: 600px) {
+    .form {
+        grid-template-columns: 90% auto;
+    }
 }

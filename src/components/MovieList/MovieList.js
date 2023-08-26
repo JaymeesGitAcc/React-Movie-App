@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { movieListAsync } from '../../features/moviesListSlice';
 import ListArticle from '../ListArticle/ListArticle';
+import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
 
 const MovieList = () => {
 
@@ -27,6 +28,7 @@ const MovieList = () => {
     return (
         <React.Fragment>
             <Header />
+            <SearchBarPrimary />
             <section className='listing_section'>
                 <h1>{show_by} Movies</h1>
                 <div className='list_container'>

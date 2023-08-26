@@ -35,7 +35,7 @@ const ListArticle = ({ item }) => {
         const date = dateObj.getDay();
         const monthName = dateObj.toLocaleString('en-US', { month: 'short' });
         const year = dateObj.getFullYear();
-        return `${date} ${monthName}, ${year}`;
+        return date ? `${date} ${monthName}, ${year}` : `${monthName}, ${year}`;
     }
 
     return (
@@ -58,7 +58,6 @@ const ListArticle = ({ item }) => {
                 <div className="listArticle_overview">
                     <p>
                         {getOverview(item.overview)}
-                        <Link to={navigateToDetailsPage()} className="know_more">know more</Link>
                     </p>
                 </div>
             </div>
