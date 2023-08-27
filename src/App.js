@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MovieDetails from './components/MovieDetails/MovieDetails';
-import Home from './components/HomePage/Home';
-import SearchResults from './components/SearchResults/SearchResults';
-import NotFound from './components/NotFound/NotFound';
-import TvShowDetails from './components/TvShowDetails/TvShowDetails';
-import PersonDetails from './components/PersonDetails/PersonDetails';
-import MovieList from './components/MovieList/MovieList';
-import TvShowList from './components/TvShowList/TvShowList';
+import MovieDetails from './Pages/MovieDetails/MovieDetails';
+import Home from './Pages/HomePage/Home';
+import SearchResults from './Pages/SearchResults/SearchResults';
+import NotFound from './Pages/NotFound/NotFound';
+import TvShowDetails from './Pages/TvShowDetails/TvShowDetails';
+import PersonDetails from './Pages/PersonDetails/PersonDetails';
+import MovieList from './Pages/MovieList/MovieList';
+import TvShowList from './Pages/TvShowList/TvShowList';
 import SideNavBar from './components/SideNavBar/SideNavBar';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/movie/:id" element={<MovieDetails/>} />
             <Route path="/tv/:id" element={<TvShowDetails />} />
             <Route path="/results/:query" element={<SearchResults />} />
             <Route path="/person/:personID" element={<PersonDetails />} />

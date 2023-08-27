@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import { searchSliceAsync } from '../../features/searchSlice';
 import styles from './SearchResults.module.css';
 import ResultArticle from './ResultArticle';
-import Header from '../Header/Header';
-import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
+import Header from '../../components/Header/Header';
+import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
+import Footer from '../../components/Footer/Footer';
 
 const SearchResults = () => {
 
@@ -29,16 +30,27 @@ const SearchResults = () => {
 
             <SearchBarPrimary />
             <section className={styles.searchResults_section}>
-                <h1>Search Results related to :{query}</h1>
+                {
+                    data.results && data.results.length > 0 &&
+                    <h1>Search Results related to "{query}"</h1>
+                }
                 <div className={styles.resultItems_container}>
                     {
-                        data.results &&
+                        data.results && data.results.length > 0 
+                        ?
                         data.results.map(result => {
                             return <ResultArticle key={result.id} result={result} />
                         })
+                        :
+                        <div className={styles.no_results}>
+                            <h2>No Results Found for "{query}"</h2>
+                        </div>
                     }
+
                 </div>
             </section>
+
+            <Footer />
         </>
     );
 }

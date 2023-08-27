@@ -26,6 +26,15 @@ const ResultArticle = ({ result }) => {
         return null;
     }
 
+    function resolveDate() {
+        const dateString = result.release_date ? result.release_date : result.first_air_date;
+        const dateObj = new Date(dateString);
+        const date = dateObj.getDay();
+        const monthName = dateObj.toLocaleString('en-US', { month: 'short' });
+        const year = dateObj.getFullYear();
+        return date ? `${date} ${monthName}, ${year}` : `${monthName}, ${year}`;
+    }
+
     return (
         <article className={styles.result_item}>
             <Link  to={`/${result.media_type}/${result.id}`}>
@@ -47,9 +56,17 @@ const ResultArticle = ({ result }) => {
                         <b>{result.title ? result.title : result.name}</b>
                     </p>
                 </Link>
-                <p>
-                    {getOverview(result.overview)}
-                </p>
+
+                {
+                    (result.releaseDate || result.first_air_date) && 
+                    <p className={styles.releaseDate}>{resolveDate()}</p>
+                }
+
+                <div className={styles.overview}>
+                    <p>
+                        {getOverview(result.overview)}
+                    </p>
+                </div>
             </div>
         </article>
     );

@@ -6,7 +6,7 @@ import { closeSideNav } from '../../features/sideNavSlice';
 
 const SideNavMenu = () => {
 
-    const [showList1, setShowList1] = useState(false);
+    const [showList1, setShowList1] = useState(true);
     const [showList2, setShowList2] = useState(false);
 
     const dispatch = useDispatch();

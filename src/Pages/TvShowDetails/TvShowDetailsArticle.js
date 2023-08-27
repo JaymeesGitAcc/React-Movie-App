@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { showYoutubePlayer } from "../../features/youtubePlayerSlice";
-import Facts from "../Facts/Facts";
+import Facts from "../../components/Facts/Facts";
 
 const TvShowDetailsArticle = ({ details }) => {
 

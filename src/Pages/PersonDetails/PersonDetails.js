@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from '../../components/Header/Header';
 import styles from './PersonDetails.module.css';
 import { errorMessage, loader, personData, personDetailsAsync } from '../../features/personDetailsSlice';
 import { useEffect } from 'react';
-import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
+import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
+import Footer from '../../components/Footer/Footer';
 
 const PersonDetails = () => {
 
@@ -113,6 +114,8 @@ const PersonDetails = () => {
 
                 </div>
             </section>
+
+            <Footer />
         </>
     );
 }

@@ -8,11 +8,12 @@ import {
     movieDetailsAsync,
     movieRecommendations,
 } from "../../features/movieDetailsSlice";
-import YoutubePlayer from "../VideoPlayer/YoutubePlayer";
+import YoutubePlayer from "../../components/VideoPlayer/YoutubePlayer";
 import MovieDetailsArticle from "./MovieDetailsArticle";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import RecommendedMovies from "./RecommendedMovies";
-import SearchBarPrimary from "../SearchBarPrimary/SearchBarPrimary";
+import SearchBarPrimary from "../../components/SearchBarPrimary/SearchBarPrimary";
+import Footer from '../../components/Footer/Footer';
 
 const MovieDetails = () => {
 
@@ -61,8 +62,11 @@ const MovieDetails = () => {
                     <YoutubePlayer data={details} />
                 }
             </section>
-
+            
+            
             <RecommendedMovies />
+
+            <Footer />
         </>
     );
 }

@@ -2,11 +2,12 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { showDetailsAsync, tvShowRecommendations } from '../../features/tvShowDetailsSlice';
-import YoutubePlayer from '../VideoPlayer/YoutubePlayer';
+import YoutubePlayer from '../../components/VideoPlayer/YoutubePlayer';
 import TvShowDetailsArticle from './TvShowDetailsArticle';
-import Header from '../Header/Header';
+import Header from '../../components/Header/Header';
 import RecommendedTvShows from './RecommendedTvShows';
-import SearchBarPrimary from '../SearchBarPrimary/SearchBarPrimary';
+import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
+import Footer from '../../components/Footer/Footer';
 
 const TvShowDetails = () => {
 
@@ -50,6 +51,8 @@ const TvShowDetails = () => {
             </section>
 
             <RecommendedTvShows />
+
+            <Footer />
         </>
     );
 }

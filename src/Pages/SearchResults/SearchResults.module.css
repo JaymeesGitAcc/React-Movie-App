@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+.searchResults_section h1 {
+    margin: 1rem 0;
+}
+
 .result_item {
     display: grid;
     grid-template-columns: 94px auto;
@@ -14,13 +18,14 @@
 }
 
 .image_container {
-    height: 141px;
+    min-height: 140px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     background-color: #d3d3d3;
 }
 
 .image_container img {
+    height: inherit;
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
 }
@@ -33,18 +38,32 @@
 
 
 .title {
-    margin-bottom: .5rem;
     transition: color .15s;
 }
 
-.know_more {
-    margin-left: 8px;
+.releaseDate {
+    margin-bottom: 1rem;
+    color: #2f4f4f;
+}
+
+.overview {
+    display: none;
     font-weight: 500;
-    transition: color .15s;
 }
 
 .title:hover, .know_more:hover {
     color: gray;
+}
+
+.no_results {
+    min-height: 400px;
+    text-align: center;
+}
+
+@media (min-width: 350px) {
+    .overview {
+        display: block;
+    }
 }
 
 
