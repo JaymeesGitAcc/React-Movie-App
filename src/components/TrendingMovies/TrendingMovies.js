@@ -3,6 +3,7 @@ import { trendingMoviesAsync } from '../../features/trendingMoviesSlice';
 import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 import styles from './TrendingMovies.module.css';
+import Loader from '../../components/Loader/Loader';
 
 const TrendingMovies = () => {
 
@@ -30,7 +31,7 @@ const TrendingMovies = () => {
                 <option value="week">This Week</option>
             </select>
 
-            {loading && <div>loading....</div>}
+            {loading && <Loader />}
 
             {error !== null && <div>{error}</div>}
 

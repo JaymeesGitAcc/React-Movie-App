@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header';
 import ListArticle from '../../components/ListArticle/ListArticle';
 import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
 import Footer from '../../components/Footer/Footer';
+import Loader from '../../components/Loader/Loader';
 
 const MovieList = () => {
 
@@ -21,7 +22,7 @@ const MovieList = () => {
 
 
     if (loading)
-        return <div>loading...</div>
+        return <Loader />
 
     if (error)
         return <div>{error}</div>

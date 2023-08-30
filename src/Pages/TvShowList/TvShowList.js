@@ -6,6 +6,7 @@ import { tvShowListAsync } from "../../features/tvShowListSlice";
 import Header from "../../components/Header/Header";
 import SearchBarPrimary from "../../components/SearchBarPrimary/SearchBarPrimary";
 import Footer from "../../components/Footer/Footer";
+import Loader from '../../components/Loader/Loader';
 
 const TvShowList = () => {
 
@@ -22,7 +23,7 @@ const TvShowList = () => {
 
 
     if (loading)
-        return <div>loading...</div>
+        return <Loader />
 
     if (error)
         return <div>{error}</div>

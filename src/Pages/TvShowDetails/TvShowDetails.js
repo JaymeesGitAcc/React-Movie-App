@@ -8,6 +8,7 @@ import Header from '../../components/Header/Header';
 import RecommendedTvShows from './RecommendedTvShows';
 import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
 import Footer from '../../components/Footer/Footer';
+import Loader from '../../components/Loader/Loader';
 
 const TvShowDetails = () => {
 
@@ -29,7 +30,7 @@ const TvShowDetails = () => {
     }
 
     if (loading)
-        return <div>loading...</div>
+        return <Loader />
 
     if (error)
         return <div>{error}</div>

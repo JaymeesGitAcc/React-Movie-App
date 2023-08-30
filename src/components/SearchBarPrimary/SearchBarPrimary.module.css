@@ -2,7 +2,7 @@
     width: 95%;
     max-width: 750px;
     display: grid;
-    grid-template-columns: 65% auto;
+    grid-template-columns: 75% auto;
     margin: 2rem auto;
 }
 

@@ -1,5 +1,8 @@
 .trendingMovies_section {
+    max-width: 1300px;
+    margin: 2rem auto;
     padding: 1rem;
+    position: relative;
 }
 
 .buttons_container {

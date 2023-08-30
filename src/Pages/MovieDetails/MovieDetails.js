@@ -14,6 +14,7 @@ import Header from "../../components/Header/Header";
 import RecommendedMovies from "./RecommendedMovies";
 import SearchBarPrimary from "../../components/SearchBarPrimary/SearchBarPrimary";
 import Footer from '../../components/Footer/Footer';
+import Loader from '../../components/Loader/Loader';
 
 const MovieDetails = () => {
 
@@ -40,7 +41,7 @@ const MovieDetails = () => {
     }
 
     if (loader)
-        return <div>loading...</div>
+        return <Loader />
 
     if (errorFlag)
         return <div>{error}</div>

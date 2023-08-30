@@ -36,19 +36,23 @@
     justify-content: center;
 }
 
-
 .title {
     transition: color .15s;
+    font-size: 14px;
 }
 
 .releaseDate {
     margin-bottom: 1rem;
+    font-size: 14px;
+    font-weight: 500;
     color: #2f4f4f;
 }
 
 .overview {
     display: none;
+    font-size: 14px;
     font-weight: 500;
+    line-height: 1.4;
 }
 
 .title:hover, .know_more:hover {

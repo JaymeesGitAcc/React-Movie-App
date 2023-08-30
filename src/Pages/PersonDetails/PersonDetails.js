@@ -6,6 +6,7 @@ import { errorMessage, loader, personData, personDetailsAsync } from '../../feat
 import { useEffect } from 'react';
 import SearchBarPrimary from '../../components/SearchBarPrimary/SearchBarPrimary';
 import Footer from '../../components/Footer/Footer';
+import Loader from '../../components/Loader/Loader';
 
 const PersonDetails = () => {
 
@@ -37,7 +38,7 @@ const PersonDetails = () => {
     }
 
     if (loading)
-        return <div>Loading...</div>
+        return <Loader />
 
     if (error)
         return <div>{error}</div>

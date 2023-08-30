@@ -24,6 +24,7 @@
 
 .footer_links li {
     margin-bottom: .5rem;
+    font-size: 13px;
 }
 
 .footer_links a {
@@ -46,6 +47,7 @@
 .contact_info p {
     color: #fff;
     margin-bottom: .5rem;
+    font-size: 13px;
 }
 
 .copyright {
@@ -64,8 +66,9 @@
     width: 95%;
     max-width: 1200px;
     margin: auto;
-    color: #ececec;
+    color: #ececec5b;
     padding: 0 1rem;
+    font-size: 13px;
 }
 
 /* 

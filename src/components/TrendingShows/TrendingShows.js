@@ -3,6 +3,7 @@ import { trendingShowsAsync } from '../../features/trendingShowsSlice';
 import styles from './TrendingShows.module.css';
 import { useEffect, useState } from 'react';
 import Card from '../Card/Card';
+import Loader from '../Loader/Loader';
 
 const TrendingShows = () => {
 
@@ -29,7 +30,7 @@ const TrendingShows = () => {
 
             {error !== null && <div>{error}</div>}
 
-            {loading && <div>loading...</div>}
+            {loading && <Loader /> }
 
             <div className={styles.row}>
                 {
